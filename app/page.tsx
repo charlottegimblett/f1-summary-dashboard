@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { DashboardCard } from "./ui/dashboard-card";
+import { Card } from "./ui/card";
+import { ButtonLink } from "./ui/button-link";
 
 export default function Home() {
   return (
@@ -14,18 +15,24 @@ export default function Home() {
         />
       </div>
       <div className="flex justify-center gap-16 grow items-center">
-        <DashboardCard
-          summary=" A summary per circuit including circuit details, fastest lap across
-            all races and total races completed"
-          buttonTitle="CIRCUIT SUMMARY"
-          href="/driver-summary"
-        />
-        <DashboardCard
-          summary="A summary per driver including number of times they have been on the
-        podium and the total number of races entered"
-          buttonTitle="DRIVER SUMMARY"
-          href="/circuit-summary"
-        />
+        <Card>
+          <div className="w-96 flex flex-col gap-8">
+            <span>
+              A summary per circuit including circuit details, fastest lap
+              across all races and total races completed
+            </span>
+            <ButtonLink href="/circuit-summary">CIRCUIT SUMMARY</ButtonLink>
+          </div>
+        </Card>
+        <Card>
+          <div className="w-96 flex flex-col gap-8">
+            <span>
+              A summary per driver including number of times they have been on
+              the podium and the total number of races entered
+            </span>
+            <ButtonLink href="/driver-summary">DRIVER SUMMARY</ButtonLink>
+          </div>
+        </Card>
       </div>
     </main>
   );
