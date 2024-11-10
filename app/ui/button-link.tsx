@@ -4,7 +4,7 @@ import { williamsBold } from "../fonts/fonts";
  * Just for clarification. A ButtonLink is a component that is a link
  * under the hood but is styled to look like a conventional Button component.
  */
-export function ButtonLink({
+export default function ButtonLink({
   href,
   children,
 }: {

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Card } from "./ui/card";
-import { ButtonLink } from "./ui/button-link";
+import Card from "./ui/card";
+import ButtonLink from "./ui/button-link";
 
 export default function Home() {
   return (

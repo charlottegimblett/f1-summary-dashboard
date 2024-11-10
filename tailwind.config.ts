@@ -18,9 +18,11 @@ export default {
         card: "rgba(18, 19, 19, 0.25) 0px 0.5px 3px",
       },
       gridTemplateColumns: {
-        "3": "50% 1fr 1fr",
+        circuit: "repeat(6, auto)",
       },
     },
   },
   plugins: [],
 } satisfies Config;
+
+// 8.25rem 10rem 8rem 9.25rem 6.5rem

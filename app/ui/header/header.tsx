@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { HeaderLink } from "./header-link";
+import HeaderLink from "./header-link";
 import Link from "next/link";
 
 export default function Header() {
