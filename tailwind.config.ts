@@ -19,6 +19,7 @@ export default {
       },
       gridTemplateColumns: {
         circuit: "repeat(6, auto)",
+        driver: "repeat(3, auto)",
       },
     },
   },
