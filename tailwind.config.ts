@@ -18,7 +18,7 @@ export default {
         card: "rgba(18, 19, 19, 0.25) 0px 0.5px 3px",
       },
       gridTemplateColumns: {
-        circuit: "repeat(6, auto)",
+        circuit: "19rem repeat(5, auto)",
         driver: "repeat(3, auto)",
       },
     },
