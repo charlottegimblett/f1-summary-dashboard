@@ -67,12 +67,12 @@ export const driverStandings: Standing[] = [
   },
 ];
 
-export const driversPodiums = new Map([
+export const expectedDriversPodiums = new Map([
   [1, 2],
   [2, 1],
 ]);
 
-export const noOfRacesPerDriver = new Map([
+export const expectedNoOfRacesPerDriver = new Map([
   [1, 3],
   [2, 2],
   [3, 2],

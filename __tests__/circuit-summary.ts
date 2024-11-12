@@ -1,119 +1,77 @@
 import {
-  circuitsData,
-  circuitsSummaryMultiple,
-  circuitsSummarySingle,
+  expectedCircuitsData,
+  expectedCircuitsSummaryMultiple,
 } from "@/__mocks__/circuits";
+import { lapTimesData } from "@/__mocks__/lap-times";
 import {
-  circuitLapTimes,
-  circuitLapTimesWithEmptyValues,
-} from "@/__mocks__/lap-times";
-import { emptyArray, emptyMap, sampleLapTimes } from "@/__mocks__/mock-data";
+  emptyArray,
+  emptyMap,
+  expectedFastestLapsPerCircuit,
+  expectedRacesPerCircuit,
+} from "@/__mocks__/mock-data";
 import { racesData } from "@/__mocks__/races";
 import {
-  getFastestLap,
+  getFastestLapPerCircuit,
+  getRacesPerCircuit,
   initialiseCircuits,
-  mapRaceIdToCircuitId,
-  updateFastestLaps,
+  parseTimeString,
 } from "@/app/utils/circuit-summary";
-import { loadData } from "@/app/utils/data-processing";
-
-describe("test loadData function", () => {
-  it("returns expected object", () => {
-    const circuitsResponse = loadData("__mocks__/mock-circuits.json");
-    expect(circuitsResponse).toStrictEqual(circuitsData);
-  });
-
-  it("incorrect path", () => {
-    const circuitsResponse = loadData("");
-    expect(circuitsResponse).toBe(undefined);
-  });
-});
 
 describe("test initialiseCircuits function", () => {
   it("returns correct value", () => {
-    const result = initialiseCircuits(circuitsData);
-    expect(result).toStrictEqual(circuitsSummaryMultiple);
+    const circuitsSummary = initialiseCircuits(expectedCircuitsData);
+    expect(circuitsSummary).toStrictEqual(expectedCircuitsSummaryMultiple);
   });
 
-  it("empty json object", () => {
-    const result = initialiseCircuits(emptyArray);
-    expect(result).toStrictEqual(emptyMap);
+  it("works with an empty array", () => {
+    const circuitsSummary = initialiseCircuits(emptyArray);
+    expect(circuitsSummary).toStrictEqual(emptyArray);
   });
 });
 
-describe("test mapRaceIdToCircuitId", () => {
+describe("test getRacesPerCircuit function", () => {
   it("returns correct value", () => {
-    const foo = mapRaceIdToCircuitId(racesData, circuitsSummaryMultiple);
-    const bar: Record<number, number> = { 1: 1, 2: 1 };
-    expect(foo).toStrictEqual(bar);
+    const racesPerCircuit = getRacesPerCircuit(racesData);
+    expect(racesPerCircuit).toStrictEqual(expectedRacesPerCircuit);
   });
 
-  it("passed empty values", () => {
-    const foo = mapRaceIdToCircuitId(emptyArray, emptyMap);
-    const bar: Record<number, number> = {};
-    expect(foo).toStrictEqual(bar);
+  it("works with an empty array", () => {
+    const racesPerCircuit = getRacesPerCircuit(emptyArray);
+    expect(racesPerCircuit).toStrictEqual(emptyMap);
   });
 });
 
-describe("test getFastestLap function", () => {
-  it("returns correct value", () => {
-    const fastestLap = getFastestLap("1:20:890", "1:22:890");
-    expect(fastestLap).toBe("1:20:890");
+describe("test getFastestLapPerCircuit function", () => {
+  it("return expected value", () => {
+    const fastestLapPerCircuit = getFastestLapPerCircuit(
+      racesData,
+      lapTimesData
+    );
+    expect(fastestLapPerCircuit).toStrictEqual(expectedFastestLapsPerCircuit);
   });
 
-  it("empty values", () => {
-    const fastestLap = getFastestLap("", "");
-    expect(fastestLap).toBe("");
-  });
-
-  it("happy use case", () => {
-    const fastestLap = sampleLapTimes.reduce(getFastestLap);
-    expect(fastestLap).toBe("1:20.456");
+  it("works with an empty array", () => {
+    const fastestLapPerCircuit = getFastestLapPerCircuit(
+      emptyArray,
+      emptyArray
+    );
+    expect(fastestLapPerCircuit).toStrictEqual(emptyMap);
   });
 });
 
-describe("test updateFastestLaps function", () => {
-  it("returns correct array", () => {
-    const updatedCircuits = updateFastestLaps(
-      circuitsSummarySingle,
-      circuitLapTimes
-    );
-
-    expect(updatedCircuits).toStrictEqual([
-      {
-        circuitId: 1,
-        name: "Albert Park Grand Prix Circuit",
-        location: "Melbourne",
-        country: "Australia",
-        latitude: -37.8497,
-        longitude: 144.968,
-        altitude: 10,
-        url: "http://en.wikipedia.org/wiki/Melbourne_Grand_Prix_Circuit",
-        noOfRaces: 0,
-        fastestLap: "1:33.362",
-      },
-    ]);
+describe("test parseTimeString function", () => {
+  it("return expected value", () => {
+    const parsedTime = parseTimeString("1:30.456");
+    expect(parsedTime).toBe(90456);
   });
 
-  it("returns correct array wth empty values", () => {
-    const updatedCircuits = updateFastestLaps(
-      circuitsSummarySingle,
-      circuitLapTimesWithEmptyValues
-    );
+  it("works with bad value", () => {
+    const parsedTime = parseTimeString("1:30:456");
+    expect(parsedTime).toBe(-1);
+  });
 
-    expect(updatedCircuits).toStrictEqual([
-      {
-        circuitId: 1,
-        name: "Albert Park Grand Prix Circuit",
-        location: "Melbourne",
-        country: "Australia",
-        latitude: -37.8497,
-        longitude: 144.968,
-        altitude: 10,
-        url: "http://en.wikipedia.org/wiki/Melbourne_Grand_Prix_Circuit",
-        noOfRaces: 0,
-        fastestLap: "",
-      },
-    ]);
+  it("works with empty string", () => {
+    const parsedTime = parseTimeString("");
+    expect(parsedTime).toBe(-1);
   });
 });

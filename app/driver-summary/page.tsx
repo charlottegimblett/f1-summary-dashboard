@@ -15,7 +15,7 @@ export default async function Page() {
         Driver Summary
       </div>
       <Search placeholder="Enter a driver's name" />
-      {drivers?.map((driver) => (
+      {drivers.map((driver) => (
         <DriverCard
           key={driver.driverId}
           driver={driver}

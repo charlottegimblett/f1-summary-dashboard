@@ -4,7 +4,8 @@ import Search from "../ui/search";
 import { getCircuitSummaryData } from "../utils/circuit-summary";
 
 export default async function Page() {
-  const circuits = await getCircuitSummaryData();
+  const { circuits, racesPerCircuit, fastestLapPerCircuit } =
+    await getCircuitSummaryData();
 
   return (
     <div className="flex flex-col gap-4 w-3/4 max-xl:w-[90%] my-0 mx-[auto]">
@@ -15,7 +16,12 @@ export default async function Page() {
       </div>
       <Search placeholder="Enter a circuit name" />
       {circuits.map((circuit) => (
-        <CircuitCard key={circuit.circuitId} circuit={circuit} />
+        <CircuitCard
+          key={circuit.circuitId}
+          circuit={circuit}
+          noOfRaces={racesPerCircuit.get(circuit.circuitId) || 0}
+          fastestLap={fastestLapPerCircuit.get(circuit.circuitId) || ""}
+        />
       ))}
     </div>
   );

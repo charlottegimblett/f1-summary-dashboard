@@ -10,7 +10,7 @@ export async function getDriverSummaryData() {
   ]);
 
   const [drivers, driversPodiums, racesPerDriver] = await Promise.all([
-    getDriverInfo(driversData),
+    initialiseDrivers(driversData),
     getPodiumsPerDriver(driverStandingsData),
     getRacesEnteredPerDriver(driverStandingsData),
   ]);
@@ -18,21 +18,16 @@ export async function getDriverSummaryData() {
   return { drivers, driversPodiums, racesPerDriver };
 }
 
-// get all the required driver data
-export function getDriverInfo(driversData: Driver[]) {
-  const drivers: DriverSummary[] = driversData.map((driver) => {
-    const driverNumber = driver.number === "\\N" ? -1 : Number(driver.number);
-    return {
-      driverId: driver.driverId,
-      firstName: driver.forename,
-      lastName: driver.surname,
-      number: driverNumber,
-      nationality: driver.nationality,
-      dob: driver.dob,
-      url: driver.url,
-    };
-  });
-  return drivers;
+export function initialiseDrivers(driversData: Driver[]): DriverSummary[] {
+  return driversData.map((driver) => ({
+    driverId: driver.driverId,
+    firstName: driver.forename,
+    lastName: driver.surname,
+    number: driver.number === "\\N" ? -1 : Number(driver.number),
+    nationality: driver.nationality,
+    dob: driver.dob,
+    url: driver.url,
+  }));
 }
 
 // count the number of times a driver has had a podium

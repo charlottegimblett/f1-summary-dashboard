@@ -25,7 +25,7 @@ export const driverData: Driver[] = [
   },
 ];
 
-export const driversSummary: DriverSummary[] = [
+export const expectedDriversSummary: DriverSummary[] = [
   {
     driverId: 1,
     number: 44,

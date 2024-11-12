@@ -6,17 +6,16 @@ function Rounded(num: number): number {
   return Math.round(num * 100) / 100;
 }
 
-export default function CircuitCard({ circuit }: { circuit: CircuitSummary }) {
-  const {
-    name,
-    noOfRaces,
-    fastestLap,
-    latitude,
-    longitude,
-    altitude,
-    location,
-    url,
-  } = circuit;
+export default function CircuitCard({
+  circuit,
+  noOfRaces,
+  fastestLap,
+}: {
+  circuit: CircuitSummary;
+  noOfRaces: number;
+  fastestLap: string;
+}) {
+  const { name, latitude, longitude, altitude, location, url } = circuit;
   return (
     <Link href={url} target="_blank">
       <Card>
