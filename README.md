@@ -4,19 +4,27 @@ Kia Ora and welcome to my application. I have created a NextJS app that displays
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+
+```bash
+npm i
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Running Tests
+
+To run the unit tests simply run:
+
+```bash
+npm run test
+```
 
 ## Assumptions
 
