@@ -1,6 +1,6 @@
 # Charlotte's Tech Test
 
-Kia Ora and welcome to my application. I have created a NextJS app using TS that displays the data specified in the requirements. When you open the app you wll be taken to home page. From there you can navigate via either using the header links or buttons on the page to see the data.
+Kia Ora and welcome to my application. I have created a NextJS app that displays the data specified in the requirements. When you open the app you wll be taken to home page. From there you can navigate via either using the header links or buttons on the page to see the data.
 
 ## Getting Started
 

@@ -2,10 +2,6 @@ import Link from "next/link";
 import Card from "../card";
 import { CircuitSummary } from "@/types";
 
-function Rounded(num: number): number {
-  return Math.round(num * 100) / 100;
-}
-
 export default function CircuitCard({
   circuit,
   noOfRaces,
@@ -46,4 +42,8 @@ export default function CircuitCard({
       <span className="text-sm">{location}</span>
     </Card>
   );
+}
+
+function Rounded(num: number): number {
+  return Math.round(num * 100) / 100;
 }

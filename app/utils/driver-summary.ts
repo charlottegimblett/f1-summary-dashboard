@@ -2,8 +2,6 @@ import { Driver, DriverSummary, Race, Standing } from "@/types";
 import { loadData } from "./data-processing";
 
 export async function getDriverSummaryData() {
-  console.log("...redoing the getDriverSummaryData func");
-
   const [driversData, driverStandingsData] = await Promise.all([
     loadData("public/data/drivers.json"),
     loadData("public/data/driver_standings.json"),
@@ -30,7 +28,6 @@ export function initialiseDrivers(driversData: Driver[]): DriverSummary[] {
   }));
 }
 
-// count the number of times a driver has had a podium
 export function getPodiumsPerDriver(driverStandingsData: Standing[]) {
   const podiums = new Map<number, number>();
 
@@ -44,7 +41,6 @@ export function getPodiumsPerDriver(driverStandingsData: Standing[]) {
   return podiums;
 }
 
-// count the number of races every driver has entered
 export function getRacesEnteredPerDriver(standingsData: Standing[]) {
   const driverRaceCount = new Map<number, Set<number>>();
 

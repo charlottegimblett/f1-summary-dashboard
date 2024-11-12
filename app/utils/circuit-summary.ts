@@ -2,8 +2,6 @@ import { Circuit, Race, Lap, CircuitSummary } from "@/types";
 import { loadData } from "./data-processing";
 
 export async function getCircuitSummaryData() {
-  console.log("...redoing the getCircuitSummaryData func");
-
   const [circuitsData, racesData, lapTimesData] = await Promise.all([
     loadData("public/data/circuits.json"),
     loadData("public/data/races.json"),

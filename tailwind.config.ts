@@ -26,5 +26,3 @@ export default {
   },
   plugins: [],
 } satisfies Config;
-
-// 8.25rem 10rem 8rem 9.25rem 6.5rem
