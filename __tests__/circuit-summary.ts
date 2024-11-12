@@ -1,13 +1,14 @@
-import { circuitsData, circuitsSummaryMap } from "@/__mocks__/circuits";
+import {
+  circuitsData,
+  circuitsSummaryMultiple,
+  circuitsSummarySingle,
+} from "@/__mocks__/circuits";
 import {
   circuitLapTimes,
   circuitLapTimesWithEmptyValues,
-  circuits,
-  emptyArray,
-  emptyMap,
-  racesData,
-  sampleLapTimes,
-} from "@/__mocks__/mock-data";
+} from "@/__mocks__/lap-times";
+import { emptyArray, emptyMap, sampleLapTimes } from "@/__mocks__/mock-data";
+import { racesData } from "@/__mocks__/races";
 import {
   getFastestLap,
   initialiseCircuits,
@@ -15,7 +16,6 @@ import {
   updateFastestLaps,
 } from "@/app/utils/circuit-summary";
 import { loadData } from "@/app/utils/data-processing";
-import { CircuitSummary } from "@/types";
 
 describe("test loadData function", () => {
   it("returns expected object", () => {
@@ -32,7 +32,7 @@ describe("test loadData function", () => {
 describe("test initialiseCircuits function", () => {
   it("returns correct value", () => {
     const result = initialiseCircuits(circuitsData);
-    expect(result).toStrictEqual(circuitsSummaryMap);
+    expect(result).toStrictEqual(circuitsSummaryMultiple);
   });
 
   it("empty json object", () => {
@@ -43,7 +43,7 @@ describe("test initialiseCircuits function", () => {
 
 describe("test mapRaceIdToCircuitId", () => {
   it("returns correct value", () => {
-    const foo = mapRaceIdToCircuitId(racesData, circuitsSummaryMap);
+    const foo = mapRaceIdToCircuitId(racesData, circuitsSummaryMultiple);
     const bar: Record<number, number> = { 1: 1, 2: 1 };
     expect(foo).toStrictEqual(bar);
   });
@@ -74,7 +74,10 @@ describe("test getFastestLap function", () => {
 
 describe("test updateFastestLaps function", () => {
   it("returns correct array", () => {
-    const updatedCircuits = updateFastestLaps(circuits, circuitLapTimes);
+    const updatedCircuits = updateFastestLaps(
+      circuitsSummarySingle,
+      circuitLapTimes
+    );
 
     expect(updatedCircuits).toStrictEqual([
       {
@@ -94,7 +97,7 @@ describe("test updateFastestLaps function", () => {
 
   it("returns correct array wth empty values", () => {
     const updatedCircuits = updateFastestLaps(
-      circuits,
+      circuitsSummarySingle,
       circuitLapTimesWithEmptyValues
     );
 

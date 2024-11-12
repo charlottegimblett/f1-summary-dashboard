@@ -25,7 +25,7 @@ export const circuitsData = [
   },
 ];
 
-export const circuitsSummaryMap: Map<number, CircuitSummary> = new Map([
+export const circuitsSummaryMultiple: Map<number, CircuitSummary> = new Map([
   [
     1,
     {
@@ -52,6 +52,24 @@ export const circuitsSummaryMap: Map<number, CircuitSummary> = new Map([
       longitude: 101.738,
       altitude: 18,
       url: "http://en.wikipedia.org/wiki/Sepang_International_Circuit",
+      noOfRaces: 0,
+      fastestLap: "",
+    },
+  ],
+]);
+
+export const circuitsSummarySingle: Map<number, CircuitSummary> = new Map([
+  [
+    1,
+    {
+      circuitId: 1,
+      name: "Albert Park Grand Prix Circuit",
+      location: "Melbourne",
+      country: "Australia",
+      latitude: -37.8497,
+      longitude: 144.968,
+      altitude: 10,
+      url: "http://en.wikipedia.org/wiki/Melbourne_Grand_Prix_Circuit",
       noOfRaces: 0,
       fastestLap: "",
     },
