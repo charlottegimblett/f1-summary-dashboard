@@ -1,6 +1,5 @@
 import { williamsBold } from "../fonts/fonts";
 import CircuitCard from "../ui/circuit-summary/circuit-card";
-import Search from "../ui/search";
 import { getCircuitSummaryData } from "../utils/circuit-summary";
 
 export default async function Page() {
@@ -14,7 +13,6 @@ export default async function Page() {
       >
         Circuit Summary
       </div>
-      <Search placeholder="Enter a circuit name" />
       {circuits.map((circuit) => (
         <CircuitCard
           key={circuit.circuitId}

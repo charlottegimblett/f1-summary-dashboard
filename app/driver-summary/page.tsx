@@ -1,6 +1,5 @@
 import { williamsBold } from "../fonts/fonts";
 import DriverCard from "../ui/driver-summary/driver-card";
-import Search from "../ui/search";
 import { getDriverSummaryData } from "../utils/driver-summary";
 
 export default async function Page() {
@@ -14,7 +13,6 @@ export default async function Page() {
       >
         Driver Summary
       </div>
-      <Search placeholder="Enter a driver's name" />
       {drivers.map((driver) => (
         <DriverCard
           key={driver.driverId}
