@@ -4,9 +4,9 @@ import Header from "./ui/header/header";
 import { inter } from "./fonts/fonts";
 
 export const metadata: Metadata = {
-  title: "F1 Racing Summmary",
+  title: "F1 Racing Summary",
   description:
-    "A dashoard that shows a summary of formula one circuit and driver stats",
+    "A dashboard that shows a summary of formula one circuit and driver stats",
 };
 
 export default function RootLayout({

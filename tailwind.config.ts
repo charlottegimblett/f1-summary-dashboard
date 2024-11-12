@@ -18,8 +18,9 @@ export default {
         card: "rgba(18, 19, 19, 0.25) 0px 0.5px 3px",
       },
       gridTemplateColumns: {
-        circuit: "19rem repeat(5, auto)",
-        driver: "repeat(3, auto)",
+        circuit: "19rem minmax(auto, 2fr) minmax(auto, 3fr) repeat(3, 2fr)",
+        driver: "16rem 18rem 1fr 1fr",
+        "driver-info": "2rem 1rem 5rem 1rem 6rem",
       },
     },
   },

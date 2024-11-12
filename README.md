@@ -20,4 +20,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Assumptions
 
-- I made the assumption that this test was more focused on the data manipulation aspect of things than the UI. Therefore I did not factor responsiveness into my application.
+- I made the assumption that this test was more focused on the data manipulation aspect of things than the UI. Therefore I did not factor responsiveness into my application. I also did not implement any search functionality or pagination which in a real case scenario would be required.

@@ -8,7 +8,7 @@ export default async function Page() {
     await getCircuitSummaryData();
 
   return (
-    <div className="flex flex-col gap-4 w-3/4 max-xl:w-[90%] my-0 mx-[auto]">
+    <div className="flex flex-col gap-4 w-3/4 max-xl:w-[90%] my-0 mx-[auto] pb-4">
       <div
         className={`${williamsBold.className} text-3xl text-primary-blue mt-8`}
       >

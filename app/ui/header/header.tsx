@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <div className="flex items-center w-full h-16 bg-primary-blue pl-4 gap-6 text-xs">
+    <div className="flex items-center w-full min-h-16 bg-primary-blue pl-4 gap-6 text-xs">
       <Link href="/">
         <Image
           height={27}
