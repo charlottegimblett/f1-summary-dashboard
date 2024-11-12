@@ -1,12 +1,11 @@
+import { circuitsData, circuitsSummaryMap } from "@/__mocks__/circuits";
 import {
   circuitLapTimes,
   circuitLapTimesWithEmptyValues,
   circuits,
-  circuitsMap,
   emptyArray,
   emptyMap,
   racesData,
-  responseFromJsonFile,
   sampleLapTimes,
 } from "@/__mocks__/mock-data";
 import {
@@ -21,7 +20,7 @@ import { CircuitSummary } from "@/types";
 describe("test loadData function", () => {
   it("returns expected object", () => {
     const circuitsResponse = loadData("__mocks__/mock-circuits.json");
-    expect(circuitsResponse).toStrictEqual(responseFromJsonFile);
+    expect(circuitsResponse).toStrictEqual(circuitsData);
   });
 
   it("incorrect path", () => {
@@ -32,8 +31,8 @@ describe("test loadData function", () => {
 
 describe("test initialiseCircuits function", () => {
   it("returns correct value", () => {
-    const result = initialiseCircuits(responseFromJsonFile);
-    expect(result).toStrictEqual(circuitsMap);
+    const result = initialiseCircuits(circuitsData);
+    expect(result).toStrictEqual(circuitsSummaryMap);
   });
 
   it("empty json object", () => {
@@ -44,7 +43,7 @@ describe("test initialiseCircuits function", () => {
 
 describe("test mapRaceIdToCircuitId", () => {
   it("returns correct value", () => {
-    const foo = mapRaceIdToCircuitId(racesData, circuitsMap);
+    const foo = mapRaceIdToCircuitId(racesData, circuitsSummaryMap);
     const bar: Record<number, number> = { 1: 1, 2: 1 };
     expect(foo).toStrictEqual(bar);
   });

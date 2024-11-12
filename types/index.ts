@@ -1,9 +1,3 @@
-export interface RaceSummary {
-  raceId: number;
-  circuitId: number;
-  lapTimes: string[];
-}
-
 export interface CircuitSummary {
   circuitId: number;
   name: string;
@@ -17,9 +11,14 @@ export interface CircuitSummary {
   fastestLap: string;
 }
 
-export interface FastestLap {
-  circuitId: number;
-  times: string[];
+export interface DriverSummary {
+  driverId: number;
+  firstName: string;
+  lastName: string;
+  number: number;
+  nationality: string;
+  dob: string;
+  url: string;
 }
 
 /**
@@ -58,11 +57,33 @@ export interface Race {
   sprint_time?: string;
 }
 
-export interface LapTime {
+export interface Lap {
   raceId: number;
   driverId: number;
   lap: number;
   position: number;
   time: string;
   milliseconds: number;
+}
+
+export interface Driver {
+  driverId: number;
+  driverRef: string;
+  number: string;
+  code: string;
+  forename: string;
+  surname: string;
+  dob: string;
+  nationality: string;
+  url: string;
+}
+
+export interface Standing {
+  driverStandingsId: number;
+  raceId: number;
+  driverId: number;
+  points: number;
+  position: number;
+  positionText: number;
+  wins: number;
 }

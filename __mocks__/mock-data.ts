@@ -1,4 +1,4 @@
-import { CircuitSummary, Race } from "@/types";
+import { CircuitSummary, Driver, DriverSummary, Race } from "@/types";
 
 export const emptyMap = new Map();
 
@@ -6,20 +6,22 @@ export const emptyArray = [];
 
 export const sampleLapTimes = ["1:22.456", "1:21.456", "1:20.456", "1:21.556"];
 
-const circuitObject: CircuitSummary = {
-  circuitId: 1,
-  name: "Albert Park Grand Prix Circuit",
-  location: "Melbourne",
-  country: "Australia",
-  latitude: -37.8497,
-  longitude: 144.968,
-  altitude: 10,
-  url: "http://en.wikipedia.org/wiki/Melbourne_Grand_Prix_Circuit",
-  noOfRaces: 0,
-  fastestLap: "",
-};
 export const circuits: Map<number, CircuitSummary> = new Map([
-  [1, circuitObject],
+  [
+    1,
+    {
+      circuitId: 1,
+      name: "Albert Park Grand Prix Circuit",
+      location: "Melbourne",
+      country: "Australia",
+      latitude: -37.8497,
+      longitude: 144.968,
+      altitude: 10,
+      url: "http://en.wikipedia.org/wiki/Melbourne_Grand_Prix_Circuit",
+      noOfRaces: 0,
+      fastestLap: "",
+    },
+  ],
 ]);
 
 export const circuitLapTimes: Record<number, string[]> = {
@@ -37,64 +39,6 @@ export const circuitLapTimes: Record<number, string[]> = {
 export const circuitLapTimesWithEmptyValues: Record<number, string[]> = {
   1: [],
 };
-
-export const responseFromJsonFile = [
-  {
-    circuitId: 1,
-    circuitRef: "albert_park",
-    name: "Albert Park Grand Prix Circuit",
-    location: "Melbourne",
-    country: "Australia",
-    lat: -37.8497,
-    lng: 144.968,
-    alt: 10,
-    url: "http://en.wikipedia.org/wiki/Melbourne_Grand_Prix_Circuit",
-  },
-  {
-    circuitId: 2,
-    circuitRef: "sepang",
-    name: "Sepang International Circuit",
-    location: "Kuala Lumpur",
-    country: "Malaysia",
-    lat: 2.76083,
-    lng: 101.738,
-    alt: 18,
-    url: "http://en.wikipedia.org/wiki/Sepang_International_Circuit",
-  },
-];
-
-export const circuitsMap: Map<number, CircuitSummary> = new Map([
-  [
-    1,
-    {
-      circuitId: 1,
-      name: "Albert Park Grand Prix Circuit",
-      location: "Melbourne",
-      country: "Australia",
-      latitude: -37.8497,
-      longitude: 144.968,
-      altitude: 10,
-      url: "http://en.wikipedia.org/wiki/Melbourne_Grand_Prix_Circuit",
-      noOfRaces: 0,
-      fastestLap: "",
-    },
-  ],
-  [
-    2,
-    {
-      circuitId: 2,
-      name: "Sepang International Circuit",
-      location: "Kuala Lumpur",
-      country: "Malaysia",
-      latitude: 2.76083,
-      longitude: 101.738,
-      altitude: 18,
-      url: "http://en.wikipedia.org/wiki/Sepang_International_Circuit",
-      noOfRaces: 0,
-      fastestLap: "",
-    },
-  ],
-]);
 
 export const racesData: Race[] = [
   {
@@ -136,5 +80,51 @@ export const racesData: Race[] = [
     quali_time: "\\N",
     sprint_date: "\\N",
     sprint_time: "\\N",
+  },
+];
+
+export const driverData: Driver[] = [
+  {
+    driverId: 1,
+    driverRef: "hamilton",
+    number: "44",
+    code: "HAM",
+    forename: "Lewis",
+    surname: "Hamilton",
+    dob: "1985-01-07",
+    nationality: "British",
+    url: "http://en.wikipedia.org/wiki/Lewis_Hamilton",
+  },
+  {
+    driverId: 2,
+    driverRef: "heidfeld",
+    number: "\\N",
+    code: "HEI",
+    forename: "Nick",
+    surname: "Heidfeld",
+    dob: "1977-05-10",
+    nationality: "German",
+    url: "http://en.wikipedia.org/wiki/Nick_Heidfeld",
+  },
+];
+
+export const driversSummary: DriverSummary[] = [
+  {
+    driverId: 1,
+    number: 44,
+    firstName: "Lewis",
+    lastName: "Hamilton",
+    dob: "1985-01-07",
+    nationality: "British",
+    url: "http://en.wikipedia.org/wiki/Lewis_Hamilton",
+  },
+  {
+    driverId: 2,
+    number: -1,
+    firstName: "Nick",
+    lastName: "Heidfeld",
+    dob: "1977-05-10",
+    nationality: "German",
+    url: "http://en.wikipedia.org/wiki/Nick_Heidfeld",
   },
 ];

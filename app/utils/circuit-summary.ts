@@ -1,8 +1,8 @@
-import { Circuit, Race, LapTime, CircuitSummary } from "@/types";
+import { Circuit, Race, Lap, CircuitSummary } from "@/types";
 import { loadData } from "./data-processing";
 
-export async function getCircuitSummaryData() {
-  console.log("redoing the getCircuitSummaryData func");
+export async function getCircuitSummaryData(): Promise<CircuitSummary[]> {
+  console.log("...redoing the getCircuitSummaryData func");
 
   const [circuitsData, racesData, lapTimesData] = await Promise.all([
     loadData("public/data/circuits.json"),
@@ -59,7 +59,7 @@ export function mapRaceIdToCircuitId(
 }
 
 export function collectLapTimesByCircuit(
-  lapTimesData: LapTime[],
+  lapTimesData: Lap[],
   raceIdToCircuitId: Record<number, number>
 ): Record<number, string[]> {
   const circuitLapTimes: Record<number, string[]> = {};

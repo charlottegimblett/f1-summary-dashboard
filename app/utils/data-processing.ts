@@ -7,6 +7,6 @@ export function loadData(filePath: string) {
     const rawData = fs.readFileSync(fullFilePath, "utf8");
     return JSON.parse(rawData);
   } catch {
-    console.log("incorrect path");
+    console.log("incorrect path: ", fullFilePath);
   }
 }
